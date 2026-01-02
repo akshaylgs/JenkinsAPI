@@ -2,7 +2,7 @@
     agent any
 
     environment {
-        PROJECT_PATH = "JenkinsAPI/JenkinsApi.csproj"
+        PROJECT_PATH = "D:\\Akshay\\Learning_Projects\\Backend\\JenkinsAPI\\JenkinsAPI\\JenkinsApi.csproj"
         PUBLISH_PATH = "C:\\Users\\Admin\\Desktop\\JenkinsAPI"
     }
 
@@ -10,7 +10,8 @@
 
         stage('Checkout Source') {
             steps {
-                checkout scm
+                git branch: 'main',
+                    url: 'https://github.com/akshaylgs/JenkinsAPI.git'
             }
         }
 
@@ -20,35 +21,32 @@
             }
         }
 
-        stage('Restore Packages') {
+        stage('Restore') {
             steps {
-                bat "dotnet restore %PROJECT_PATH%"
+                bat "dotnet restore ${PROJECT_PATH}"
             }
         }
 
         stage('Build') {
             steps {
-                bat "dotnet build %PROJECT_PATH% -c Release --no-restore"
+                bat "dotnet build ${PROJECT_PATH} --configuration Release --no-restore"
             }
         }
 
         stage('Publish') {
             steps {
                 bat """
-                dotnet publish %PROJECT_PATH% ^
-                -c Release ^
-                -o %PUBLISH_PATH% ^
+                dotnet publish ${PROJECT_PATH} ^
+                --configuration Release ^
+                --output ${PUBLISH_PATH} ^
                 --no-build
                 """
             }
         }
 
-        stage('Deploy to IIS') {
+        stage('Restart IIS') {
             steps {
-                bat """
-                echo Restarting IIS...
-                iisreset
-                """
+                bat "iisreset"
             }
         }
     }
