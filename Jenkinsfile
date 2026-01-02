@@ -3,8 +3,8 @@
 
     environment {
         DOTNET_VERSION = "8.0"
-        PROJECT_PATH = "D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\JenkinsApi.csproj"
-        PUBLISH_PATH = "C:\Users\Admin\Desktop\JenkinsAPI"
+        PROJECT_PATH = "D:\\Akshay\\Learning_Projects\\Backend\\JenkinsAPI\\JenkinsAPI\\JenkinsApi.csproj"
+        PUBLISH_PATH = "C:\\Users\\Admin\\Desktop\\JenkinsAPI"
         IIS_SITE_NAME = "JenkinsAPI"
     }
 
