@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_PATH = "JenkinsAPI/JenkinsApi.csproj"
+        PROJECT_PATH = "C:\ProgramData\Jenkins\.jenkins\workspace\JenkinsAPI"
         IIS_SITE_PATH = "C:\\inetpub\\wwwroot\\JenkinsAPI"
         APP_POOL = "JenkinsAPI"
     }
