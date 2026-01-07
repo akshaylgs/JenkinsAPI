@@ -1,0 +1,8 @@
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Release\net8.0\JenkinsApi.csproj.AssemblyReference.cache
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Release\net8.0\JenkinsApi.GeneratedMSBuildEditorConfig.editorconfig
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Release\net8.0\JenkinsApi.AssemblyInfoInputs.cache
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Release\net8.0\JenkinsApi.AssemblyInfo.cs
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Release\net8.0\JenkinsApi.csproj.CoreCompileInputs.cache
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Release\net8.0\JenkinsApi.MvcApplicationPartsAssemblyInfo.cs
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Release\net8.0\JenkinsApi.MvcApplicationPartsAssemblyInfo.cache
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Release\net8.0\JenkinsApi.sourcelink.json

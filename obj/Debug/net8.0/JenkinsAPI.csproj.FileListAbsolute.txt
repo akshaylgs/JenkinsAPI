@@ -34,3 +34,4 @@ D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Debug\net8.0\refin
 D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Debug\net8.0\JenkinsAPI.pdb
 D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Debug\net8.0\JenkinsAPI.genruntimeconfig.cache
 D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Debug\net8.0\ref\JenkinsAPI.dll
+D:\Akshay\Learning_Projects\Backend\JenkinsAPI\JenkinsAPI\obj\Debug\net8.0\JenkinsAPI.sourcelink.json
