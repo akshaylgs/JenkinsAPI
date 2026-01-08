@@ -81,18 +81,18 @@ pipeline {
         }
 
         stage('Approve IIS Restart') {
-            when {
-                branch 'release'
-            }
-            steps {
-                timeout(time: 30, unit: 'MINUTES') {
-                    input (
-                        message: "Approve RELEASE deployment and IIS restart?"
-                        ok: "Approve Deployment"
-                    )
-                }
-            }
-        }
+			when {
+				branch 'release'
+			}
+			steps {
+				timeout(time: 30, unit: 'MINUTES') {
+					input(
+						message: 'Approve RELEASE deployment and IIS restart?',
+						ok: 'Approve Deployment'
+					)
+				}
+			}
+		}
 
         stage('Restart IIS App Pool') {
             when {
