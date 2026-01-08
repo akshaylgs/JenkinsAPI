@@ -86,10 +86,10 @@ pipeline {
             }
             steps {
                 timeout(time: 30, unit: 'MINUTES') {
-                    input {
+                    input (
                         message: "Approve RELEASE deployment and IIS restart?"
                         ok: "Approve Deployment"
-                    }
+                    )
                 }
             }
         }
