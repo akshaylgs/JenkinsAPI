@@ -161,7 +161,7 @@ pipeline {
 
 		Check console output for more details.
 		""",
-				to: 'akshay@helpxpress.com'
+				to: 'akshay.k@helpxpress.com'
 			)
 		}
 
