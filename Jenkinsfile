@@ -148,11 +148,22 @@ pipeline {
         }
 
         success {
-            echo '✅ Deployment completed successfully'
-            subject '✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}',
-            body 'Build succeeded.\n\nJob: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER}',
-            to 'akshay@helpxpress.com'
-        }
+			echo '✅ Deployment completed successfully'
+
+			emailext(
+				subject: "✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+				body: """
+		Build succeeded 🎉
+
+		Job Name : ${env.JOB_NAME}
+		Build No : ${env.BUILD_NUMBER}
+		Branch   : ${env.BRANCH_NAME}
+
+		Check console output for more details.
+		""",
+				to: 'akshay@helpxpress.com'
+			)
+		}
 
         always {
             echo '📌 Pipeline finished'
