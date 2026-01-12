@@ -149,6 +149,9 @@ pipeline {
 
         success {
             echo '✅ Deployment completed successfully'
+            subject '✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}',
+            body 'Build succeeded.\n\nJob: ${env.JOB_NAME}\nBuild: ${env.BUILD_NUMBER}',
+            to 'akshay@helpxpress.com'
         }
 
         always {
