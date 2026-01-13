@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_PATH  = "D:\\Akshay\\Learning_Projects\\Backend\\JenkinsAPI\\JenkinsAPI\\JenkinsApi.csproj"
+        PROJECT_PATH  = "JenkinsAPI/JenkinsApi.csproj"
         IIS_SITE_PATH = "C:\\inetpub\\wwwroot\\JenkinsAPI"
         TEMP_PUBLISH  = "C:\\temp\\jenkins_publish"
         BACKUP_ROOT   = "C:\\inetpub\\backup\\JenkinsAPI"
