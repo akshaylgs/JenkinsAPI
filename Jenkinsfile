@@ -16,13 +16,6 @@ pipeline {
     stages {
 
         /* ===================== CI ===================== */
-		stage('Branch Debug') {
-			steps {
-				echo "BRANCH_NAME = ${env.BRANCH_NAME}"
-				echo "GIT_BRANCH  = ${env.GIT_BRANCH}"
-			}
-		}
-
         stage('Verify .NET SDK') {
             steps {
                 bat 'dotnet --version'
