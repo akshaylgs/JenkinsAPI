@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_PATH  = "D:\\Akshay\\Learning_Projects\\Backend\\JenkinsAPI\\JenkinsAPI\\JenkinsApi.csproj"
+        PROJECT_PATH  = "JenkinsAPI/JenkinsApi.csproj"
         IIS_SITE_PATH = "C:\\inetpub\\wwwroot\\JenkinsAPI"
         TEMP_PUBLISH  = "C:\\temp\\jenkins_publish"
         BACKUP_ROOT   = "C:\\inetpub\\backup\\JenkinsAPI"
@@ -16,12 +16,28 @@ pipeline {
     stages {
 
         /* ===================== CI ===================== */
-
+		stage('Checkout SCM') {
+			steps {
+				checkout scm
+			}
+		}
+		
         stage('Verify .NET SDK') {
             steps {
                 bat 'dotnet --version'
             }
         }
+		
+		stage('Debug Workspace') {
+			steps {
+				bat '''
+				echo ===== WORKSPACE =====
+				echo %WORKSPACE%
+				echo ===== DIR TREE =====
+				dir /s
+				'''
+			}
+		}
 
         stage('Restore') {
             steps {
@@ -148,8 +164,22 @@ pipeline {
         }
 
         success {
-            echo '✅ Deployment completed successfully'
-        }
+			echo '✅ Deployment completed successfully'
+
+			emailext(
+				subject: "✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+				body: """
+		Build succeeded 🎉
+
+		Job Name : ${env.JOB_NAME}
+		Build No : ${env.BUILD_NUMBER}
+		Branch   : ${env.BRANCH_NAME}
+
+		Check console output for more details.
+		""",
+				to: 'akshay.k@helpxpress.com'
+			)
+		}
 
         always {
             echo '📌 Pipeline finished'
