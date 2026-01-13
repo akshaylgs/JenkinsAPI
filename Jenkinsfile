@@ -16,7 +16,12 @@ pipeline {
     stages {
 
         /* ===================== CI ===================== */
-
+		stage('Checkout SCM') {
+			steps {
+				checkout scm
+			}
+		}
+		
         stage('Verify .NET SDK') {
             steps {
                 bat 'dotnet --version'
