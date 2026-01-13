@@ -22,6 +22,17 @@ pipeline {
                 bat 'dotnet --version'
             }
         }
+		
+		stage('Debug Workspace') {
+			steps {
+				bat '''
+				echo ===== WORKSPACE =====
+				echo %WORKSPACE%
+				echo ===== DIR TREE =====
+				dir /s
+				'''
+			}
+		}
 
         stage('Restore') {
             steps {
