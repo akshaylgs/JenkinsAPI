@@ -62,7 +62,10 @@ pipeline {
         stage('Sync Files to IIS') {
             when { branch 'release' }
             steps {
-                bat 'robocopy "%TEMP_PUBLISH%" "%IIS_SITE_PATH%" /E /XO /R:2 /W:2'
+				bat '''
+				robocopy "%TEMP_PUBLISH%" "%IIS_SITE_PATH%" /E /XO /R:2 /W:2
+				exit /b 0
+				'''
             }
         }
 
