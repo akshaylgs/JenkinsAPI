@@ -61,17 +61,31 @@ pipeline {
             }
         }
 
-        stage('Sync Files to IIS') {
-            when { branch 'release' }
-            steps {
+        stage('Stop IIS App Pool') {
+			when { branch 'release' }
+			steps {
+				bat '%windir%\\system32\\inetsrv\\appcmd stop apppool /apppool.name:%APP_POOL%'
+			}
+		}
+
+		stage('Sync Files to IIS (Correct)') {
+			when { branch 'release' }
+			steps {
 				bat '''
-				robocopy "%TEMP_PUBLISH%" "%IIS_SITE_PATH%" /E /XO /XN ^
+				robocopy "%TEMP_PUBLISH%" "%IIS_SITE_PATH%" /E /XO ^
 				/XF %IGNORE_FILES% ^
-				/XD %IGNORE_DIRS% ^
 				/R:2 /W:2
 				'''
-            }
-        }
+			}
+		}
+
+		stage('Start IIS App Pool') {
+			when { branch 'release' }
+			steps {
+				bat '%windir%\\system32\\inetsrv\\appcmd start apppool /apppool.name:%APP_POOL%'
+			}
+		}
+
 
         stage('Approve IIS Restart') {
             when { branch 'release' }
