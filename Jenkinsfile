@@ -7,6 +7,8 @@ pipeline {
         TEMP_PUBLISH  = "C:\\temp\\jenkins_publish"
         BACKUP_ROOT   = "C:\\inetpub\\backup\\JenkinsAPI"
         APP_POOL      = "JenkinsAPI"
+		IGNORE_FILES = "appsettings.Production.json web.config appsettings.json"
+		/* IGNORE_DIRS  = "Uploads Logs" */
     }
 
     options {
@@ -63,8 +65,10 @@ pipeline {
             when { branch 'release' }
             steps {
 				bat '''
-				robocopy "%TEMP_PUBLISH%" "%IIS_SITE_PATH%" /E /XO /R:2 /W:2
-				exit /b 0
+				robocopy "%TEMP_PUBLISH%" "%IIS_SITE_PATH%" /E /XO /XN ^
+				/XF %IGNORE_FILES% ^
+				/XD %IGNORE_DIRS% ^
+				/R:2 /W:2
 				'''
             }
         }
