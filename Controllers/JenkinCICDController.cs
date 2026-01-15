@@ -13,5 +13,11 @@ namespace JenkinsAPI.Controllers
             string ans = nums.ToString();
             return StatusCode(200,ans);   
         }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return StatusCode(200, "Get working properly::::::::::::");
+        }
     }
 }
