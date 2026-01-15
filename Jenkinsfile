@@ -71,11 +71,23 @@ pipeline {
 		stage('Sync Files to IIS (Correct)') {
 			when { branch 'release' }
 			steps {
-				bat '''
-				robocopy "%TEMP_PUBLISH%" "%IIS_SITE_PATH%" /E /XO ^
-				/XF %IGNORE_FILES% ^
-				/R:2 /W:2
-				'''
+				script {
+					def rc = bat(
+						script: '''
+						robocopy "%TEMP_PUBLISH%" "%IIS_SITE_PATH%" /E /XO ^
+						/XF %IGNORE_FILES% ^
+						/R:2 /W:2
+						''',
+						returnStatus: true
+					)
+
+					// Robocopy success codes: 0–7
+					if (rc >= 8) {
+						error "❌ Robocopy failed with exit code ${rc}"
+					} else {
+						echo "✅ Robocopy completed successfully (exit code ${rc})"
+					}
+				}
 			}
 		}
 
