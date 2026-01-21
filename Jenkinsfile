@@ -4,7 +4,7 @@ pipeline {
     environment {
         PROJECT_PATH  = "JenkinsAPI.csproj"
         IIS_SITE_PATH = "C:\\inetpub\\wwwroot\\JenkinsAPI"
-        TEMP_PUBLISH  = "C:\\temp\\jenkins_publish"
+        TEMP_PUBLISH  = "C:\\BackUp\\JankinsBackup"
         BACKUP_ROOT   = "C:\\inetpub\\backup\\JenkinsAPI"
         APP_POOL      = "JenkinsAPI"
 		IGNORE_FILES = "appsettings.Production.json web.config appsettings.json"
@@ -49,15 +49,6 @@ pipeline {
             }
         }
 
-        stage('Restart IIS App Pool') {
-            when { branch 'release' }
-            steps {
-                bat '''
-                %windir%\\system32\\inetsrv\\appcmd stop apppool /apppool.name:%APP_POOL%
-                %windir%\\system32\\inetsrv\\appcmd start apppool /apppool.name:%APP_POOL%
-                '''
-            }
-        }
     }
 
     post {
